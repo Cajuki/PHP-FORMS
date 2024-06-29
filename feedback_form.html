@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election_feedback form</title>
+    <style>body {
+        font-family: Arial, sans-serif;
+        background-color: #4dbb22;
+    } 
+    
+    #feedback-form {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    input[type="text"], input[type="email"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+    }
+    
+    input[type="number"] {
+        width: 50px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+    }
+    
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    
+    input[type="submit"]:hover {
+        background-color: #7f967f;
+    }</style>
+</head>
+<body>
+    <h1>campaing_feedback form</h1>
+     <center><img src="https://th.bing.com/th/id/OIP.u6nPX1qoP2Aceb0gMOZubwHaC_?rs=1&pid=ImgDetMain" height="300" width="100%"></center>
+    <form id="feedback-form" method="post" action="submit_feedback.php">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" required></textarea><br><br>
+
+        <label for="rating">Rating (1-10):</label>
+        <input type="number" id="rating" name="rating" min="1" max="5" required><br><br>
+
+        <input type="submit" value="Submit Feedback">
+    </form>
+
+    <script>
+        const form = document.getElementById('feedback-form');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const feedback = document.getElementById('feedback').value;
+    const rating = document.getElementById('rating').value;
+
+    if (name === '' || email === '' || feedback === '' || rating === '') {
+        alert('Please fill in all fields');
+        return;
+    }
+
+    if (rating < 1 || rating > 10) {
+        alert('Rating must be between 1 and 10');
+        return;
+    }
+
+    form.submit();
+});
+    </script> 
+</body>
+</html>
+        
